@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kn">
 <head>
 <meta charset="UTF-8">
 <title>For Shruti ❤️</title>
@@ -13,7 +13,7 @@
 }
 
 body{
-    font-family: 'Georgia', serif;
+    font-family: 'Noto Serif Kannada', 'Tunga', 'Kedage', Georgia, serif;
     min-height:100vh;
     background: linear-gradient(135deg,#fdfbfb,#ebedee);
     display:flex;
@@ -25,7 +25,7 @@ body{
 .container{
     width:90%;
     max-width:900px;
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.92);
     backdrop-filter: blur(10px);
     border-radius:25px;
     padding:50px;
@@ -48,6 +48,7 @@ h1{
     text-align:center;
     margin-top:10px;
     color:#666;
+    font-size:1.1rem;
 }
 
 .heart{
@@ -67,7 +68,7 @@ h1{
     font-size:1.3rem;
     line-height:1.8;
     color:#333;
-    min-height:180px;
+    min-height:200px;
 }
 
 /* Gallery */
@@ -96,21 +97,23 @@ h1{
     margin-top:40px;
     color:#777;
     font-style:italic;
+    font-size:1.05rem;
 }
 
-/* Music button */
+/* Music button (mobile safe) */
 .music-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#e91e63;
-    color:#fff;
-    border:none;
-    padding:14px 18px;
-    border-radius:50px;
-    font-size:1rem;
-    cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow:0 12px 25px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -118,17 +121,17 @@ h1{
 <body>
 
 <!-- Background Music -->
-<audio id="music" autoplay loop>
+<audio id="music" loop playsinline>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">🔊 Music</button>
+<button class="music-btn" onclick="toggleMusic()">🔊 ಸಂಗೀತ</button>
 
 <div class="container">
 
     <div class="heart">❤️</div>
-    <h1>Shruti</h1>
-    <p class="subtitle">Happy Marriage Anniversary • 11 Feb 2022</p>
+    <h1>ಶ್ರುತಿ</h1>
+    <p class="subtitle">ಸಂತೋಷದ ವಿವಾಹ ವಾರ್ಷಿಕೋತ್ಸವ • 11 ಫೆಬ್ರವರಿ 2022</p>
 
     <!-- Typing Letter -->
     <div class="letter" id="letter"></div>
@@ -142,7 +145,7 @@ h1{
     </div>
 
     <div class="footer">
-        Forever grateful for you — Your Husband 💖
+        ಎಂದೆಂದಿಗೂ ನಿನ್ನವನಾಗಿ — ರಾಘವೇಂದ್ರ ❤️
     </div>
 </div>
 
@@ -164,11 +167,11 @@ var text =
 "ಈ ಜೀವನದಲ್ಲಿ ಮಾತ್ರವಲ್ಲ,\n" +
 "ಪ್ರತಿ ಜೀವನದಲ್ಲೂ ನಾನು ನಿನ್ನವನೇ ಆಗಿರಲಿ ಎಂದು ಹಾರೈಸುತ್ತೇನೆ.\n\n" +
 "ಪ್ರೀತಿಯಿಂದ,\n" +
-"ಎಂದೆಂದಿಗೂ ನಿನ್ನವನಾದ ರಾಘವೇಂದ್ರ  ❤️";
-
+"ಎಂದೆಂದಿಗೂ ನಿನ್ನವನಾದ ರಾಘವೇಂದ್ರ ❤️";
 
 var i = 0;
 var speed = 45;
+
 function typeWriter(){
     if(i < text.length){
         document.getElementById("letter").innerHTML += 
@@ -188,6 +191,13 @@ function toggleMusic(){
         music.pause();
     }
 }
+
+/* Auto play on first touch (mobile-safe) */
+document.body.addEventListener('click', function () {
+    if (music.paused) {
+        music.play();
+    }
+}, { once: true });
 </script>
 
 </body>
